@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -46,4 +47,10 @@ public class AuthenticationController {
         return ResponseEntity.ok().headers(headers).body(sign);
     }
 
+    @RequestMapping("/")
+    public ModelAndView welcome() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/index.html");
+        return modelAndView;
+    }
 }
