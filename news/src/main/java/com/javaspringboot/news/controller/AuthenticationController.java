@@ -20,37 +20,53 @@ public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
 
-    @PostMapping("/signup")
-    public ResponseEntity<User> signup(@RequestBody SignUpRequest signUpRequest) {
-        return ResponseEntity.ok(authenticationService.signUp(signUpRequest));
-    }
+    // @PostMapping("/signup")
+    // public ResponseEntity<User> signup(@RequestBody SignUpRequest signUpRequest) {
+    //     return ResponseEntity.ok(authenticationService.signUp(signUpRequest));
+    // }
 
-    @PostMapping("/signin")
-    public ResponseEntity<JwtAuthenticationResponse> sigin(@RequestBody SignInRequest signInRequest) {
-        return ResponseEntity.ok(authenticationService.signIn(signInRequest));
-    }
+    // @PostMapping("/signin")
+    // public ResponseEntity<JwtAuthenticationResponse> sigin(@RequestBody SignInRequest signInRequest) {
+    //     return ResponseEntity.ok(authenticationService.signIn(signInRequest));
+    // }
 
     @PostMapping("/refresh")
     public ResponseEntity<JwtAuthenticationResponse> refresh(@RequestBody RefreshTokenRequest refreshTokenRequest) {
         return ResponseEntity.ok(authenticationService.refreshToken(refreshTokenRequest));
     }
 
-    @GetMapping("/get")
-    public ResponseEntity<SignUpRequest> testApi() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Access-Control-Allow-Origin", "*"); // Allow requests from all origins
-        SignUpRequest sign = new SignUpRequest();
-        sign.setEmail("user@gmail.com");
-        sign.setPassword("user");
-        sign.setFirstname("user");
-        sign.setLastname("user");
-        return ResponseEntity.ok().headers(headers).body(sign);
+    @PostMapping("/signup")
+    public ModelAndView signup(@ModelAttribute SignUpRequest signUpRequest) {
+        ModelAndView modelAndView = new ModelAndView();
+        User signup = authenticationService.signUp(signUpRequest);
+        if(signup == null){
+            modelAndView.setViewName("/404.html");
+        }
+        modelAndView.setViewName("/login.html");
+        return modelAndView;
+    }
+    @PostMapping("/signin")
+    public ModelAndView signin(@ModelAttribute SignInRequest signInRequest) {
+        ModelAndView modelAndView = new ModelAndView();
+        
+        System.err.println("email " + signInRequest.getEmail() + "  " + signInRequest.getPassword());
+        JwtAuthenticationResponse res;
+        try {
+            res = authenticationService.signIn(signInRequest);
+            modelAndView.setViewName("redirect:/api/auth/home");
+        } catch (IllegalArgumentException e) {
+            System.err.println("lpasidjas");
+            modelAndView.setViewName("redirect:/home/404");
+        }
+        
+        return modelAndView;
     }
 
-    @RequestMapping("/")
-    public ModelAndView welcome() {
+
+    @RequestMapping("/home")
+    public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/index.html");
+        modelAndView.setViewName("/login.html");
         return modelAndView;
     }
 }

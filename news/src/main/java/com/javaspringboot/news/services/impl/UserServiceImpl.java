@@ -1,8 +1,12 @@
 package com.javaspringboot.news.services.impl;
 
+import com.javaspringboot.news.entities.User;
 import com.javaspringboot.news.repository.UserRepo;
 import com.javaspringboot.news.services.UserService;
 import lombok.RequiredArgsConstructor;
+
+import java.util.Optional;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,4 +28,6 @@ public class UserServiceImpl implements UserService {
             }
         };
     }
+
+    
 }

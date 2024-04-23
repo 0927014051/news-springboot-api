@@ -41,6 +41,12 @@ public class User implements UserDetails {
     private Role role;
 
     @Column
+    private String token;
+
+    @Column
+    private String refresh_token;
+
+    @Column
     private LocalDateTime created_at;
 
     @Column
