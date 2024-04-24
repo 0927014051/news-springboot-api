@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     @RequestMapping("/404")
-    public String pageError(){
+    public String page404(){
         return "/404.html";
     }
-
 }

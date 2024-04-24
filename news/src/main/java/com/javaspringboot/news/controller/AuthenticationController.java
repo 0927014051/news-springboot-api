@@ -18,18 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class AuthenticationController {
 
+    private static JwtAuthenticationResponse userFinal;
+
     private final AuthenticationService authenticationService;
-
-    // @PostMapping("/signup")
-    // public ResponseEntity<User> signup(@RequestBody SignUpRequest signUpRequest) {
-    //     return ResponseEntity.ok(authenticationService.signUp(signUpRequest));
-    // }
-
-    // @PostMapping("/signin")
-    // public ResponseEntity<JwtAuthenticationResponse> sigin(@RequestBody SignInRequest signInRequest) {
-    //     return ResponseEntity.ok(authenticationService.signIn(signInRequest));
-    // }
-
     @PostMapping("/refresh")
     public ResponseEntity<JwtAuthenticationResponse> refresh(@RequestBody RefreshTokenRequest refreshTokenRequest) {
         return ResponseEntity.ok(authenticationService.refreshToken(refreshTokenRequest));
@@ -48,14 +39,10 @@ public class AuthenticationController {
     @PostMapping("/signin")
     public ModelAndView signin(@ModelAttribute SignInRequest signInRequest) {
         ModelAndView modelAndView = new ModelAndView();
-        
-        System.err.println("email " + signInRequest.getEmail() + "  " + signInRequest.getPassword());
-        JwtAuthenticationResponse res;
         try {
-            res = authenticationService.signIn(signInRequest);
-            modelAndView.setViewName("redirect:/api/auth/home");
+            userFinal = authenticationService.signIn(signInRequest);
+            modelAndView.setViewName("redirect:/api/user/home");
         } catch (IllegalArgumentException e) {
-            System.err.println("lpasidjas");
             modelAndView.setViewName("redirect:/home/404");
         }
         
@@ -69,4 +56,11 @@ public class AuthenticationController {
         modelAndView.setViewName("/login.html");
         return modelAndView;
     }
+
+    public static JwtAuthenticationResponse getJwtSiginController() {
+        return userFinal;
+    }
+
+    
+
 }
