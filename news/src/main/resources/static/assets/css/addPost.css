@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .editor {
+    width: 80%;
+    margin: 50px auto;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical; /* Cho phép điều chỉnh chiều cao dọc */
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  

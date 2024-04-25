@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+<title>Text Editor</title>
+<link rel="stylesheet" href="/assets/css/addPost.css">
+</head>
+<body>
+
+  <input type="file" id="fileInput" accept=".docx">
+  <form id = "postForm" action="/api/admin/1/update" method="post">
+  <div class="editor">
+    <label for="fontSize">Font Size:</label>
+    <select id="fontSize" onchange="changeFontSize(this.value)">
+      <option value="14px">14px</option>
+      <option value="16px">16px</option>
+      <option value="18px">18px</option>
+    </select>
+  
+    <label for="fontColor">Font Color:</label>
+    <input type="color" id="fontColor" onchange="changeFontColor(this.value)">
+  
+    <label for="fontFamily">Font Family:</label>
+    <select id="fontFamily" onchange="changeFontFamily(this.value)">
+      <option value="Arial, sans-serif">Arial</option>
+      <option value="Times New Roman, serif">Times New Roman</option>
+      <option value="Courier New, monospace">Courier New</option>
+    </select>
+  
+    <textarea id="editor" name = "post_data" placeholder="Type here..."></textarea>
+    <button id="save" class="save" type="submit">Save</button>
+  </div>
+</form>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.4/mammoth.browser.min.js"></script>
+  <script src="/assets/js/addPost.js"></script>
+  </body>
+  </html>

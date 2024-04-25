@@ -64,7 +64,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         final String jwt = extractTokenFromResponse(); // Trích xuất token từ JwtAuthenticationResponse
-        System.err.println("jwt: " + jwt);
         if (StringUtils.isNotEmpty(jwt) && SecurityContextHolder.getContext().getAuthentication() == null) {
             String userEmail = jwtService.extractUserName(jwt);
             UserDetails userDetails = userService.userDetailsService().loadUserByUsername(userEmail);

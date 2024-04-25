@@ -1,5 +1,7 @@
 package com.javaspringboot.news.config;
 
+import com.javaspringboot.news.controller.AuthenticationController;
+import com.javaspringboot.news.dto.JwtAuthenticationResponse;
 import com.javaspringboot.news.entities.Role;
 import com.javaspringboot.news.services.UserService;
 
@@ -104,7 +106,12 @@ public AuthenticationEntryPoint customAuthenticationEntryPoint() {
     return new AuthenticationEntryPoint() {
         @Override
         public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-            response.sendRedirect("/home/404"); // Chuyển hướng đến trang yêu cầu của bạn
+            JwtAuthenticationResponse res = AuthenticationController.getJwtSiginController();
+            if (res == null) {
+                response.sendRedirect("/api/auth/home");
+            } else {
+                response.sendRedirect("/home/404"); // Chuyển hướng đến trang yêu cầu của bạn
+            }
         }
     };
 

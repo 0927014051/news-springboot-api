@@ -246,73 +246,25 @@
             <div class="all-blog-posts">
               <div class="row">
                 <div class="col-lg-12">
-                  <div class="blog-post">
+                  <div class="blog-post" th:each = "post : ${post}" >
                     <!-- Tiêu đề và nội dung của bài viết hiện tại -->
-                    <h1 class="article-title">
-                      PM requests removal of difficulties in pharmaceutical
-                      export
+                    <h1 class="article-title" th:text ="${post.title}">
+                    
                     </h1>
                     <p class="title-hint">
                       <strong
-                        >The Prime Minister also asked relevant ministries to
-                        complete the new regulations before April 25, 2024 to
-                        remove current difficulties and create favourable
-                        conditions for the production and business activities
-                        for the medicinal herbs</strong
+                         th:text = "${post.hint}"></strong
                       >.
                     </p>
                     <br />
                     <img
-                      src="https://image.vietnamnews.vn/uploadvnnews/Article/2024/4/11/343096_que.jpg"
+                      th:src="${post.image}"
                     />
-                    <p class="name-img">
-                      Harvesting cinnamon. The inventory in the raw material
-                      area is about 100 tonnes of cinnamon due to difficulties
-                      in export. —VNA/VNS Photo
+                    <p class="name-img" th:text = "${post.image_name}">
+                      
                     </p>
-                    <p class="content-title">
-                      HÀ NỘI — The Prime Minister has requested the Ministry of
-                      Health to coordinate with the Ministry of Finance and
-                      relevant agencies to urgently review and amend the
-                      existing regulations on exporting medicinal herbs. The
-                      Prime Minister also asked them to complete the new
-                      regulations before April 25, 2024 to remove current
-                      difficulties and create favourable conditions for the
-                      production and business activities for the medicinal
-                      herbs. Those are main contents of Official Telegram
-                      35/CĐ-TTg on removing difficulties for pharmaceutical
-                      export activities, signed by Prime Minister Phạm Minh
-                      Chính on April 10 to send to the Ministry of Health and
-                      Ministry of Finance. The official telegram stated that
-                      recently, the export of some medicinal herbs has faced
-                      difficulties, affecting the production and business
-                      activities of many enterprises. Besides the difficult
-                      market and falling prices, there are also problems in
-                      implementing some regulations of the Ministry of Health.
-                      In addition, the Việt Nam Pepper and Spice Association
-                      (VPSA) has requested the Government to address problems in
-                      regulations for cinnamon essential oil export. The
-                      association said the inventory in the raw material area is
-                      about 100 tonnes of cinnamon because businesses have faced
-                      the problems in implementing regulations on management and
-                      export of cinnamon essential oil. Meanwhile, there will be
-                      about 400 more tonnes of essential oils by the end of
-                      cinnamon season in March-April 2024. VSPA also said in the
-                      future, Việt Nam will develop deep processing of essential
-                      oil products for other Vietnamese spices, while there is a
-                      high demand for essential oils, especially cinnamon
-                      essential oils, in the global market. The management
-                      agencies need to have support for the export of those
-                      products, especially the export of value-added products
-                      and products helping reduce carbon emissions. The
-                      association and localities have proposed that export
-                      declaration of cinnamon essential oil is carried out as
-                      export of food products, not medicinal materials. If
-                      businesses export natural cinnamon essential oil as a raw
-                      material for food and beverages, they must comply with the
-                      provisions of Decree 15/2018/NĐ-CP detailing the
-                      implementation of some articles at the Food Safety Law. —
-                      VNS
+                    <p class="content-title" th:utext="${post.post_data.replace('[newline]', '<br>')}"></p>
+                      
                     </p>
                   </div>
                   <div class="rectangle-divider">MORE ON THIS STORY</div>

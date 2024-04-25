@@ -41,6 +41,12 @@ public class Post {
     private String author;
 
     @Column
+    private String hint;
+
+    @Column
+    private String image_name;
+
+    @Column
     private LocalDateTime created_at;
 
     @Column
