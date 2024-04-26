@@ -29,7 +29,10 @@ public class UserController {
     public ModelAndView homeUser(Model model){
         ModelAndView modelAndView = new ModelAndView();
         List<Post> allPost = postService.findAll();
+        List<Post> postBanner = postService.findLatestPosts();
         model.addAttribute("post", allPost);
+        model.addAttribute("postBanner", postBanner);
+
         modelAndView.setViewName("/index.html");
         return modelAndView;
     }

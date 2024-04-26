@@ -3,6 +3,9 @@ package com.javaspringboot.news.services.impl;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.javaspringboot.news.entities.Post;
@@ -47,6 +50,17 @@ public class PostServiceImpl implements PostService{
        findPost.setPost_data(post.getPost_data());
      return  postRepo.save(findPost);
 
+    }
+
+    @Override
+    public Page<Post> findAllWithPage(Integer pageNo) {
+      Pageable pageable = PageRequest.of(pageNo - 1, 5);
+      return postRepo.findAll(pageable);
+    }
+
+    @Override
+    public List<Post> findLatestPosts() {
+        return postRepo.findLatestPosts();
     }
 
 }

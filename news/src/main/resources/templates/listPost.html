@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      name="viewport"
+    />
+    <meta content="" name="description" />
+    <meta content="TemplateMo" name="author" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/assets/css/listPost.css" rel="stylesheet" />
+    <link href="/assets/css/icon.css" rel="stylesheet" />
+  </head>
+  <body class="hero-anime">
+      <div class="navigation-wrap bg-light start-header start-style">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <nav class="navbar navbar-expand-md navbar-light">
+                <a
+                  class="navbar-brand"
+                  href="https://front.codes/"
+                  target="_blank"
+                  ><img src="https://assets.codepen.io/1462889/fcy.png" alt=""
+                /></a>
+                <div
+                  class="collapse navbar-collapse"
+                  id="navbarSupportedContent"
+                >
+                  <ul class="navbar-nav ml-auto py-4 py-md-0">
+                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+                      <a
+                        class="nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                        href="#"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        >Home</a
+                      >
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#"
+                          >Something else here</a
+                        >
+                        <a class="dropdown-item" href="#">Another action</a>
+                      </div>
+                    </li>
+                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                      <a class="nav-link" href="#">Portfolio</a>
+                    </li>
+                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                      <a class="nav-link" href="#">Agency</a>
+                    </li>
+                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                      <a
+                        class="nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                        href="#"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        >Services</a
+                      >
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#"
+                          >Something else here</a
+                        >
+                        <a class="dropdown-item" href="#">Another action</a>
+                      </div>
+                    </li>
+                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                      <a class="nav-link" href="#">Journal</a>
+                    </li>
+                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                      <a class="nav-link" href="#">Contact</a>
+                    </li>
+                  </ul>
+                </div>
+                <div id="switch">
+                    <div id="circle"></div>
+                  </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <ol style="--length: 5" role="list">
+            <li style="--i: 5" th:each="post : ${post}">
+             <a th:href="@{'/api/admin/update/' + ${post.post_id}}"> <h3 th:text="${post.title}"></h3></a>
+              <p th:text="${post.hint}"></p>
+            </li>
+          </ol>
+    
+      </div>
+      
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script src="/assets/js/listPost.js"></script>
+</html>

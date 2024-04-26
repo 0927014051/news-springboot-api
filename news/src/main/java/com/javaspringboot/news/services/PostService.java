@@ -1,6 +1,8 @@
 package com.javaspringboot.news.services;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.javaspringboot.news.entities.Post;
 public interface PostService {
 
@@ -11,5 +13,10 @@ public interface PostService {
     Post findPostBySlug(String slug) throws IllegalAccessException;
 
     Post updatePostById(Long id,Post post) throws IllegalAccessException;
+
+    Page<Post> findAllWithPage(Integer pageNo);
+    
+    List<Post> findLatestPosts();
+
 
 }
